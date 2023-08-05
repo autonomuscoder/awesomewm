@@ -29,8 +29,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 6
-    y: 6
+    x: 10
+    y: 10
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -111,7 +111,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: JetBrainsMono Nerd Font
+    family: Hack Nerd Font
     # family: JetBrains Mono
 
     # The `style` can be specified to pick a specific face.
@@ -123,7 +123,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono Nerd Font
+    family: Hack Nerd Font
     # family: JetBrains Mono
 
     # The `style` can be specified to pick a specific face.
@@ -135,7 +135,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono Nerd Font
+    family: Hack Nerd Font
     # family: JetBrains Mono
 
     # The `style` can be specified to pick a specific face.
@@ -147,14 +147,14 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrainsMono Nerd Font
+    family: Hack Nerd Font
     # family: JetBrains Mono
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -177,7 +177,7 @@ colors:
   # Default colors
   primary:
     background: '#000000'
-    foreground: '#DCDFE4'
+    foreground: '#d4be98'
 
     # Bright and dim foreground colors
     #
@@ -186,7 +186,7 @@ colors:
     # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
     # color will be used.
     dim_foreground: '#828482'
-    bright_foreground: '#eaeaea'
+      #bright_foreground: '#eaeaea'
 
   # Cursor colors
   #
@@ -270,26 +270,24 @@ colors:
 
   # Normal colors
   normal:
-    black: '#282C34'
-    red: '#E06C75'
-    green: '#98C379'
-    yellow: '#E5C07B'
-    blue: '#61AFEF'
-    magenta: '#C678DD'
-    cyan: '#56B6C2'
-    white: '#DCDFE4'
-
+    black:   '#32302f'
+    red:     '#ea6962'
+    green:   '#a9b665'
+    yellow:  '#d8a657'
+    blue:    '#7daea3'
+    magenta: '#d3869b'
+    cyan:    '#89b482'
+    white:   '#d4be98'
   # Bright colors
   bright:
-    black: '#282C34'
-    red: '#E06C75'
-    green: '#98C379'
-    yellow: '#E5C07B'
-    blue: '#61AFEF'
-    magenta: '#C678DD'
-    cyan: '#56B6C2'
-    white: '#DCDFE4'
-
+    black:   '#32302f'
+    red:     '#ea6962'
+    green:   '#a9b665'
+    yellow:  '#d8a657'
+    blue:    '#7daea3'
+    magenta: '#d3869b'
+    cyan:    '#89b482'
+    white:   '#d4be98'
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based

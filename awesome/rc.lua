@@ -50,7 +50,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init("/home/nuhas/.config/awesome/theme.lua")
+beautiful.init("/home/xero/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -67,6 +67,7 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
+    awful.layout.suit.float,
 }
 -- }}}
 
@@ -276,11 +277,11 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.spawn("pcmanfm") end,
-              {description = "open a terminal", group = "launcher"}),
+              {description = "open a file manager", group = "launcher"}),
     awful.key({ modkey,           }, "x", function () awful.util.spawn("archlinux-logout") end,
-              {description = "open a terminal", group = "launcher"}),
+              {description = "logout menu", group = "launcher"}),
     awful.key({ modkey,           }, "b", function () awful.spawn("brave") end,
-              {description = "open a terminal", group = "launcher"}),
+              {description = "open a web browser", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -549,13 +550,6 @@ client.connect_signal("request::titlebars", function(c)
     }
 end)
 
--- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
-end)
-
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 --
 -- gaps
@@ -565,7 +559,7 @@ beautiful.useless_gap= 3
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("volumeicon")
 awful.spawn.with_shell("picom")
-awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+awful.spawn.with_shell("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
 awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("numlockx on")
 awful.spawn.with_shell("dunst")
