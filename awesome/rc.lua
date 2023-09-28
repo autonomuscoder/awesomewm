@@ -10,6 +10,13 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
+
+-- Sourcing configs
+require("eminent")
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+--require ("keys")
+require ("autostart")
+
 --theming
 
 -- Notification library
@@ -103,7 +110,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+--mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -169,7 +176,8 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX" }, s, awful.layout.layouts[1])
+    awful.tag({"1","2","3","4","5","6","7","8","9",}, s, awful.layout.layouts[1])
+  --  awful.tag({ "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -212,8 +220,11 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+						cpu_widget({
+							width = 30,
+						}),
             mytextclock,
-            s.mylayoutbox,
+           -- s.mylayoutbox,
         },
     }
 end)
@@ -276,11 +287,13 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey,           }, "e", function () awful.spawn("pcmanfm") end,
+    awful.key({ modkey,           }, "e", function () awful.spawn("thunar") end,
               {description = "open a file manager", group = "launcher"}),
     awful.key({ modkey,           }, "x", function () awful.util.spawn("archlinux-logout") end,
               {description = "logout menu", group = "launcher"}),
-    awful.key({ modkey,           }, "b", function () awful.spawn("brave") end,
+    awful.key({ modkey,           }, "b", function () awful.spawn("brave-browser") end,
+              {description = "open a web browser", group = "launcher"}),
+    awful.key({ modkey,           }, "r", function () awful.spawn("redshift -O 5000") end,
               {description = "open a web browser", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
@@ -437,6 +450,7 @@ clientbuttons = gears.table.join(
 root.keys(globalkeys)
 -- }}}
 
+
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
@@ -555,14 +569,4 @@ end)
 -- gaps
 beautiful.useless_gap= 3
 
---autostart
-awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("volumeicon")
-awful.spawn.with_shell("picom")
-awful.spawn.with_shell("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
-awful.spawn.with_shell("nitrogen --restore")
-awful.spawn.with_shell("numlockx on")
-awful.spawn.with_shell("dunst")
-awful.spawn.with_shell("xclip")
-awful.spawn.with_shell("cbatticon")
-awful.spawn.with_shell("blueman-applet")
+
